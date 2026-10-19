@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#090B13">
+<meta name="theme-color" content="#F8ECCB">
 <title>Youssef Almaidan</title>
 <meta name="description" content="Youssef Almaidan, web developer working across React, FastAPI, data and machine learning.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +22,9 @@
 <style>
 /* Layout: full-bleed bands with a 1320px inner grid; a fixed y-axis rail on the inline-end edge tracks position; the Path band pins and scrolls sideways on a real month scale. */
 :root{
-  --bg:#ECEEF3; --bg2:#E0E3EB; --card:#F6F7FA; --fg:#0E1220; --muted:#596077;
-  --line:rgba(14,18,32,.13); --accent:#2B3FF2; --signal:#F2672A; --on-accent:#FFFFFF;
+  /* Palette: deep mocha #4E3D42, deep teal #708D81, jasmine #F4D58D, cinnabar #DD403A */
+  --bg:#F8ECCB; --bg2:#F1DFAE; --card:#FCF5E3; --fg:#4E3D42; --muted:#76666A;
+  --line:rgba(78,61,66,.16); --accent:#C93A34; --signal:#5E7A6E; --on-accent:#FFF8E8;
   --scrim:rgba(8,10,18,.5);
   --f-display:"Anybody","Arial Narrow",system-ui,sans-serif;
   --f-body:"Readex Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -36,14 +37,14 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#090B13; --bg2:#111521; --card:#131828; --fg:#E8EAF3; --muted:#8E95AE;
-    --line:rgba(232,234,243,.13); --accent:#8291FF; --signal:#FF9550; --on-accent:#090B13;
+    --bg:#2B2125; --bg2:#352A2E; --card:#3D3035; --fg:#F6E6BF; --muted:#B3A39B;
+    --line:rgba(246,230,191,.14); --accent:#EC5A52; --signal:#94B3A5; --on-accent:#1E1619;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#090B13; --bg2:#111521; --card:#131828; --fg:#E8EAF3; --muted:#8E95AE;
-  --line:rgba(232,234,243,.13); --accent:#8291FF; --signal:#FF9550; --on-accent:#090B13;
+  --bg:#2B2125; --bg2:#352A2E; --card:#3D3035; --fg:#F6E6BF; --muted:#B3A39B;
+  --line:rgba(246,230,191,.14); --accent:#EC5A52; --signal:#94B3A5; --on-accent:#1E1619;
   color-scheme:dark;
 }
 :root[dir="rtl"]{--dir:-1; --f-display:var(--f-ar)}
@@ -1166,7 +1167,8 @@ const hero = (() => {
     gap = Math.max(3, Math.round(fs / 26));
     o.fillStyle = '#000';
     lines.forEach(span => {
-      const r = span.getBoundingClientRect(), cs = getComputedStyle(span), text = span.textContent;
+      const r = span.getBoundingClientRect(), cs = getComputedStyle(span);
+      const text = cs.textTransform === 'uppercase' ? span.textContent.toUpperCase() : span.textContent;
       o.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
       if ('fontStretch' in o) o.fontStretch = lang === 'ar' ? 'normal' : 'expanded';
       o.direction = lang === 'ar' ? 'rtl' : 'ltr'; o.textAlign = 'left'; o.textBaseline = 'alphabetic';
